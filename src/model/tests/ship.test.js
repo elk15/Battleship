@@ -1,23 +1,31 @@
 import Ship from '../ship';
 
-test('should increase times hit by 1', () => {
-    const newShip = new Ship(8);
-    newShip.hit();
-    newShip.hit();
-    expect(newShip.timesHit).toBe(2);
-});
+describe('ship', () => {
+    let testShip;
+    beforeEach(() => {
+        testShip = new Ship(4);
+    });
 
-test('sink ships after too many hits', () => {
-    const newShip = new Ship(4);
-    newShip.hit();
-    newShip.hit();
-    newShip.hit();
-    newShip.hit();
-    expect(newShip.isSunk()).toBeTruthy();
-});
+    test('should start with 0 hits', () => {
+        expect(testShip.timesHit).toBe(0);
+    });
 
-test('not sink ships if hits are lower than length', () => {
-    const newShip = new Ship(4);
-    newShip.hit();
-    expect(newShip.isSunk()).toBeFalsy();
+    test('should increase times hit by 1', () => {
+        testShip.hit();
+        testShip.hit();
+        expect(testShip.timesHit).toBe(2);
+    });
+
+    test('sink ships after too many hits', () => {
+        testShip.hit();
+        testShip.hit();
+        testShip.hit();
+        testShip.hit();
+        expect(testShip.isSunk()).toBeTruthy();
+    });
+
+    test('not sink ships if hits are lower than length', () => {
+        testShip.hit();
+        expect(testShip.isSunk()).toBeFalsy();
+    });
 });
