@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;900&display=swap');
+
+
 @font-face {
 
     font-family: 'default';
@@ -9,8 +12,155 @@
     weight: 600;
 }
 
-div {
-    color: red;
-    font-family: 'default';
-    font-size: 4rem;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: 'default', sans-serif;
+}
+
+:root {
+    --font-color: rgb(233, 233, 233);
+    --secondary-color: #3d3d3d;
+    --primary-color: #303030;
+    --green: #2bc557;
+    --red: #e23636;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    font-size: 1.2rem;
+}
+
+.header-container {
+    align-items: center;
+}
+
+#new-game {
+    padding: 10px 30px;
+    font-size: 1.4rem;
+    color: var(--font-color);
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    cursor: pointer;
+    transition: transform 200ms ease-in-out;
+}
+
+#new-game:hover {
+    transform: translate(0, -5px);
+}
+
+main{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    background-color: var(--primary-color)
+}
+
+.main-container, .header-container {
+    width: 1000px;
+    display: flex;
+}
+
+.header-container {
+    justify-content: space-between;
+
+}
+
+.main-container {
+    justify-content: center;
+    gap: 20px;
+    color: var(--font-color);
+    height: 100%;
+}
+
+#player-board, #enemy-board, #game-caption {
+    border: 2px black solid;
+}
+
+#game-caption {
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+}
+
+#player-caption, #enemy-caption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2rem;
+    padding-top: 10px;
+}
+
+#player-caption, #player-caption>hr {
+    color: var(--green);
+}
+
+#enemy-caption, #enemy-caption>hr {
+    color: var(--red);
+}
+
+.board hr {
+    width: 100%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#player-board, #enemy-board {
+    height: 30rem;
+    width: 30rem;
+}
+
+.caption-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 1000px) {
+    .main-container, .header-container {
+        width: 100%;
+    }
+
+    main {
+        padding-top: 10px;
+    }
+
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+
+   
+
+    
+}
+
+@media only screen and (max-width: 400px) {
+    #player-board, #enemy-board {
+        height: 250px;
+        width: 250px;
+    }
+
+    * {
+        font-size: 1rem;
+    }
+
+    #new-game {
+        padding: 5px 20px;
+        font-size: 0.9rem;
+    }
 }
