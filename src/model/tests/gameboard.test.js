@@ -10,8 +10,13 @@ describe('gameboard', () => {
     });
 
     test('should place ships on board correctly', () => {
-        console.log(testBoard);
         expect(testBoard.getPosition(0, 3).length).toBe(4);
+    });
+
+    test('should place random ships', () => {
+        const randomBoard = new Gameboard();
+        randomBoard.placeShipsRandomly();
+        expect(randomBoard.ships.length).toBe(8);
     });
 
     test('should recieve attack and hit correct ships', () => {
