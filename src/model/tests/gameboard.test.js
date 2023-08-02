@@ -13,6 +13,14 @@ describe('gameboard', () => {
         expect(testBoard.getPosition(0, 3).length).toBe(4);
     });
 
+    test('should check if there are adjacent ships', () => {
+        expect(testBoard.doesNotHaveAdjShips(2, 1, 4, 'v')).toBeFalsy();
+    });
+
+    test('should check if there are adjacent ships 2', () => {
+        expect(testBoard.doesNotHaveAdjShips(1, 9, 9, 'h')).toBeFalsy();
+    });
+
     test('should place random ships', () => {
         const randomBoard = new Gameboard();
         randomBoard.placeShipsRandomly();
