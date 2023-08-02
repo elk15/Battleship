@@ -2,7 +2,8 @@ import Ship from './ship';
 
 export default class Gameboard {
     constructor() {
-        this.board = [['', '', '', '', '', '', '', '', '', ''],
+        this.board = [
+            ['', '', '', '', '', '', '', '', '', ''],
             ['', '', '', '', '', '', '', '', '', ''],
             ['', '', '', '', '', '', '', '', '', ''],
             ['', '', '', '', '', '', '', '', '', ''],
@@ -17,34 +18,38 @@ export default class Gameboard {
         this.ships = [];
     }
 
-    placeShip(length, x, y, orientation) {
-        if (!(this.board[x][y] instanceof Ship)) {
+    getBoard() {
+        return this.board;
+    }
+
+    placeShip(length, row, col, orientation) {
+        if (!(this.board[row][col] instanceof Ship)) {
             const newShip = new Ship(length);
             this.ships.push(newShip);
-            this.board[x][y] = newShip;
+            this.board[row][col] = newShip;
             if (orientation === 'h') {
                 for (let i = 1; i < length; i++) {
-                    this.board[x + i][y] = newShip;
+                    this.board[row][col + i] = newShip;
                 }
             } else {
                 for (let i = 1; i < length; i++) {
-                    this.board[x][y + i] = newShip;
+                    this.board[row + i][col] = newShip;
                 }
             }
         }
     }
 
-    getPosition(x, y) {
-        return this.board[x][y];
+    getPosition(row, col) {
+        return this.board[row][col];
     }
 
-    recieveAttack(x, y) {
-        if (this.board[x][y] instanceof Ship) {
-            if (!this.board[x][y].isSunk()) {
-                this.board[x][y].hit();
+    recieveAttack(row, col) {
+        if (this.board[row][col] instanceof Ship) {
+            if (!this.board[row][col].isSunk()) {
+                this.board[row][col].hit();
             }
-        } else if (this.board[x][y] === '') {
-            this.board[x][y] = 'missed';
+        } else if (this.board[row][col] === '') {
+            this.board[row][col] = 'missed';
         }
     }
 
