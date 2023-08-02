@@ -7,7 +7,37 @@
     <title>Battleship</title>
 </head>
 <body>
-    <div>Test</div>
+    <div class="container">
+        <header>
+            <div class="header-container">
+                <h1>Battleship</h1>
+                <button id="new-game">New Game</button>
+            </div>
+        </header>
+        <main>
+            <div class="main-container">
+                <div class="board">
+                    <div id="player-board"></div>
+                    <div id="player-caption">
+                        <p>Player Board</p>
+                        <hr>
+                        <p>Remaining Ships: <span class="unsinked-ships"></span></p>
+                    </div>
+                </div>
+                <div class="caption-wrapper">
+                    <p id="game-caption">Your Turn!</p>
+                </div>
+                <div class="board">
+                    <div id="enemy-board"></div>
+                    <div id="enemy-caption">
+                        <p>Enemy Board</p>
+                        <hr>
+                        <p>Remaining Ships: <span class="unsinked-ships"></span></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
