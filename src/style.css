@@ -1,0 +1,16 @@
+@font-face {
+
+    font-family: 'default';
+  
+    src: url('./font/04B_30__.ttf') format('truetype');
+
+    style: normal;
+
+    weight: 600;
+}
+
+div {
+    color: red;
+    font-family: 'default';
+    font-size: 4rem;
+}
