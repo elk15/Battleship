@@ -1,14 +1,19 @@
 import EnemyLogic from '../enemyLogic';
+import Gameboard from '../gameboard';
 
 describe('enemy logic', () => {
     let testLogic;
+    let testBoard;
 
     beforeEach(() => {
         testLogic = new EnemyLogic();
+        testBoard = new Gameboard();
+        testBoard.placeShip(1, 0, 9, 'h');
+        testBoard.placeShip(3, 2, 2, 'h');
         testLogic.movesDone = [
             ['miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'ship'],
             ['miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss'],
-            ['miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss'],
+            ['miss', 'miss', 'ship', '', '', 'miss', 'miss', 'miss', 'miss', 'miss'],
             ['miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss'],
             ['miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss', 'miss'],
             ['miss', '', 'miss', 'miss', '', 'miss', 'miss', 'miss', 'miss', 'miss'],
@@ -29,7 +34,12 @@ describe('enemy logic', () => {
     });
 
     test('should find position of ship', () => {
-        expect(testLogic.findShip()).toEqual([0, 9]);
+        expect(testLogic.findShip(testBoard)).toEqual([0, 9]);
+    });
+
+    test('should find position of first unsinked ship', () => {
+        testBoard.recieveAttack(0, 9);
+        expect(testLogic.findShip(testBoard)).toEqual([2, 2]);
     });
 
     test('should calculate a valid move based on direction', () => {
