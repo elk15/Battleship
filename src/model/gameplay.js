@@ -16,4 +16,10 @@ export default class Gameplay {
         View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
         View.displayRemainingPlayerShips(this.player.getRemainingShips());
     }
+
+    static playerMakesMove(row, col) {
+        const isSuccess = Gameplay.player.makeMove(row, col, Gameplay.enemy.getBoard());
+        View.displayMoveResult(row, col, isSuccess);
+        View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
+    }
 }

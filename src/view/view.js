@@ -36,4 +36,27 @@ export default class View {
     static displayRemainingPlayerShips(amount) {
         document.querySelector('#player-caption .unsinked-ships').textContent = amount;
     }
+
+    static findSquare(row, col, id) {
+        let result;
+        document.querySelectorAll(`${id} .square`).forEach((square) => {
+            if (square.dataset.row === row && square.dataset.col === col) {
+                result = square;
+            }
+        });
+        return result;
+    }
+
+    static displayMoveResult(row, col, isSuccess) {
+        const square = this.findSquare(row, col, '#enemy-board');
+        if (isSuccess) {
+            square.classList.remove('empty');
+            square.classList.add('ship-hit');
+            square.innerHTML = '<span>X</span>';
+        } else {
+            square.innerHTML = '<span>*</span>';
+            square.classList.remove('empty');
+            square.classList.add('miss');
+        }
+    }
 }

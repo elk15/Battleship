@@ -122,6 +122,28 @@ main{
 .square {
     height: 2.5rem;
     width: 2.5rem;
+    font-size: 2.5rem;
+    
+}
+
+#enemy-board .square {
+    text-align: center;
+    position: relative;
+    cursor: default;
+}
+
+#enemy-board .empty {
+    cursor: crosshair;
+}
+
+#enemy-board .empty:hover{
+    background-color: rgb(87, 52, 180);
+}
+
+#enemy-board .miss span{
+    font-size: 4rem;
+    position: absolute;
+    left: 5px;
 }
 
 .empty {
@@ -131,6 +153,14 @@ main{
 
 .ship {
     background-color: #808080;
+}
+
+.ship-hit {
+    background-color: #e23636;
+}
+
+.miss {
+    background-color: #2389da;
 }
 
 #player-board, #enemy-board {
@@ -154,6 +184,7 @@ main{
     .square {
         height: 2rem;
         width: 2rem;
+        font-size: 2rem;
     }
 
     main {
@@ -176,10 +207,18 @@ main{
     .square {
         height: 1rem;
         width: 1rem;
+        font-size: 1rem;
+
     }
 
     #new-game {
         padding: 5px 20px;
         font-size: 0.9rem;
+    }
+
+    #enemy-board .miss span{
+        font-size: 2rem;
+        position: absolute;
+        left: 1px;
     }
 }
