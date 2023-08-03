@@ -119,9 +119,19 @@ main{
     margin-bottom: 5px;
 }
 
+.position {
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: #2389da;
+
+}
+
 #player-board, #enemy-board {
-    height: 30rem;
-    width: 30rem;
+    background-color: #002c66;
+    display: grid;
+    gap: 5px 5px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
 }
 
 .caption-wrapper {
@@ -150,10 +160,10 @@ main{
 }
 
 @media only screen and (max-width: 400px) {
-    #player-board, #enemy-board {
+    /* #player-board, #enemy-board {
         height: 250px;
         width: 250px;
-    }
+    } */
 
     * {
         font-size: 1rem;

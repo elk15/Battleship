@@ -1,3 +1,4 @@
+import View from '../view/view';
 import Player from './player';
 
 export default class Gameplay {
@@ -7,6 +8,8 @@ export default class Gameplay {
 
     static startGame() {
         Gameplay.player.placeShipsRandomly();
+        View.generatePlayerBoard(this.player.getBoard());
         Gameplay.enemy.placeShipsRandomly();
+        View.generateEnemyBoard(this.enemy.getBoard());
     }
 }
