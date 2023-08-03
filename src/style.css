@@ -87,7 +87,40 @@ main{
     height: 100%;
 }
 
-#player-board, #enemy-board, #game-caption {
+
+
+.board {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    grid-template-rows: 20px 1fr;
+    gap: 8px;
+}
+
+.board .columns {
+    grid-row: 1/2;
+    grid-column: 2/3;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.board .rows {
+    
+    grid-column: 1/2;
+    grid-row: 2/3;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#player-board, #enemy-board {
+    border: 4px #002c66 solid;
+    grid-column: 2/3;
+    grid-row: 2/3;
+}
+
+#game-caption {
     border: 2px black solid;
 }
 
@@ -113,7 +146,7 @@ main{
     color: var(--red);
 }
 
-.board hr {
+hr {
     width: 100%;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -177,14 +210,15 @@ main{
 }
 
 @media only screen and (max-width: 1000px) {
+
     .main-container, .header-container {
         width: 100%;
     }
 
     .square {
-        height: 2rem;
-        width: 2rem;
-        font-size: 2rem;
+        height: 1.8rem;
+        width: 1.8rem;
+        font-size: 1.8rem;
     }
 
     main {
@@ -202,6 +236,14 @@ main{
 @media only screen and (max-width: 500px) {
     * {
         font-size: 1rem;
+    }
+
+    .columns span, .rows span{
+        font-size: 0.8rem;
+    }
+
+    .board {
+        gap: 2px;
     }
 
     .square {
