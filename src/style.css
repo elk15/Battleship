@@ -209,6 +209,36 @@ hr {
     align-items: center;
 }
 
+@keyframes blinking-red {
+    0% {
+      color: #FFF;
+      border-color: #FFF;
+    }
+    100% {
+        color: var(--red);
+        border-color: var(--red);
+    }
+}
+
+.red-blink {
+    animation: blinking-red 1s infinite;
+}
+
+@keyframes blinking-green {
+    0% {
+      color: #FFF;
+      border-color: #FFF;
+    }
+    100% {
+        color: var(--green);
+        border-color: var(--green);
+    }
+}
+
+.green-blink {
+    animation: blinking-green 1s infinite;
+}
+
 @media only screen and (max-width: 1000px) {
 
     .main-container, .header-container {
@@ -229,6 +259,12 @@ hr {
         flex-direction: column;
         align-items: center;
         gap: 15px;
+    }
+
+    #enemy-board .miss span, #player-board .miss span{
+        font-size: 2.2rem;
+        position: absolute;
+        bottom: -10px;
     }
     
 }
@@ -258,9 +294,8 @@ hr {
         font-size: 0.9rem;
     }
 
-    #enemy-board .miss span{
+    #enemy-board .miss span,  #player-board .miss span{
         font-size: 2rem;
-        position: absolute;
-        left: 1px;
+        position: static;
     }
 }

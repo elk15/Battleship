@@ -72,4 +72,26 @@ export default class View {
             square.classList.add('miss');
         }
     }
+
+    static addRedBlinking() {
+        const caption = document.querySelector('#game-caption');
+        caption.classList.remove('green-blink');
+        caption.classList.add('red-blink');
+    }
+
+    static addGreenBlinking() {
+        const caption = document.querySelector('#game-caption');
+        caption.classList.remove('red-blink');
+        caption.classList.add('green-blink');
+    }
+
+    static displayPlayerTurn() {
+        View.addGreenBlinking();
+        document.querySelector('#game-caption').textContent = 'Your Turn!';
+    }
+
+    static displayEnemyTurn() {
+        View.addRedBlinking();
+        document.querySelector('#game-caption').textContent = 'Enemy\'s Turn!';
+    }
 }

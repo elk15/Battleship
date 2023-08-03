@@ -19,6 +19,7 @@ export default class Gameplay {
         View.generateEnemyBoard(this.enemy.getBoard());
         View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
         View.displayRemainingPlayerShips(this.player.getRemainingShips());
+        View.displayPlayerTurn();
     }
 
     static playerMakesMove(row, col) {
@@ -26,7 +27,8 @@ export default class Gameplay {
         View.displayPlayerMoveResult(row, col, isSuccess);
         View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
         if (!isSuccess) {
-            Gameplay.enemyMakesMove();
+            View.displayEnemyTurn();
+            setTimeout(Gameplay.enemyMakesMove, 500);
         }
     }
 
@@ -34,8 +36,9 @@ export default class Gameplay {
         while (true) {
             let [row, col, isSuccess] = Gameplay.enemyAI.attack(Gameplay.player.getBoard());
             View.displayEnemyMoveResult(row, col, isSuccess);
-            View.displayRemainingPlayerShips(this.player.getRemainingShips());
+            View.displayRemainingPlayerShips(Gameplay.player.getRemainingShips());
             if (!isSuccess) {
+                View.displayPlayerTurn();
                 break;
             }
         }
