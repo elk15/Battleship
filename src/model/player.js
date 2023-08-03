@@ -31,4 +31,8 @@ export default class Player {
         }
         return false;
     }
+
+    getRemainingShips() {
+        return this.board.getRemainingShips();
+    }
 }

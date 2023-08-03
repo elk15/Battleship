@@ -28,4 +28,12 @@ export default class View {
     static generateEnemyBoard(board) {
         View.generateBoard('#enemy-board', board);
     }
+
+    static displayRemainingEnemyShips(amount) {
+        document.querySelector('#enemy-caption .unsinked-ships').textContent = amount;
+    }
+
+    static displayRemainingPlayerShips(amount) {
+        document.querySelector('#player-caption .unsinked-ships').textContent = amount;
+    }
 }

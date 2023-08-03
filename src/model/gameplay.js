@@ -13,5 +13,7 @@ export default class Gameplay {
         View.generatePlayerBoard(this.player.getBoard());
         Gameplay.enemy.placeShipsRandomly();
         View.generateEnemyBoard(this.enemy.getBoard());
+        View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
+        View.displayRemainingPlayerShips(this.player.getRemainingShips());
     }
 }
