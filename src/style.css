@@ -126,7 +126,7 @@ main{
     
 }
 
-#enemy-board .square {
+#enemy-board .square, #player-board .square {
     text-align: center;
     position: relative;
     cursor: default;
@@ -140,7 +140,7 @@ main{
     background-color: rgb(87, 52, 180);
 }
 
-#enemy-board .miss span{
+#enemy-board .miss span, #player-board .miss span{
     font-size: 4rem;
     position: absolute;
     left: 5px;

@@ -47,10 +47,23 @@ export default class View {
         return result;
     }
 
-    static displayMoveResult(row, col, isSuccess) {
+    static displayPlayerMoveResult(row, col, isSuccess) {
         const square = this.findSquare(row, col, '#enemy-board');
         if (isSuccess) {
             square.classList.remove('empty');
+            square.classList.add('ship-hit');
+            square.innerHTML = '<span>X</span>';
+        } else {
+            square.innerHTML = '<span>*</span>';
+            square.classList.remove('empty');
+            square.classList.add('miss');
+        }
+    }
+
+    static displayEnemyMoveResult(row, col, isSuccess) {
+        const square = this.findSquare(row.toString(), col.toString(), '#player-board');
+        if (isSuccess) {
+            square.classList.remove('ship');
             square.classList.add('ship-hit');
             square.innerHTML = '<span>X</span>';
         } else {
