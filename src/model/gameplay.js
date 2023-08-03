@@ -26,6 +26,10 @@ export default class Gameplay {
         const isSuccess = Gameplay.player.makeMove(row, col, Gameplay.enemy.getBoard());
         View.displayPlayerMoveResult(row, col, isSuccess);
         View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
+        if (Gameplay.enemy.isGameOver()) {
+            View.displayPlayerWin();
+            return;
+        }
         if (!isSuccess) {
             View.displayEnemyTurn();
             setTimeout(Gameplay.enemyMakesMove, 500);
@@ -37,6 +41,10 @@ export default class Gameplay {
             let [row, col, isSuccess] = Gameplay.enemyAI.attack(Gameplay.player.getBoard());
             View.displayEnemyMoveResult(row, col, isSuccess);
             View.displayRemainingPlayerShips(Gameplay.player.getRemainingShips());
+            if (Gameplay.player.isGameOver()) {
+                View.displayEnemyWin();
+                return;
+            }
             if (!isSuccess) {
                 View.displayPlayerTurn();
                 break;

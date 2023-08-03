@@ -75,6 +75,7 @@ describe('gameboard', () => {
         testBoard.recieveAttack(0, 0);
 
         testBoard.recieveAttack(4, 3);
+        testBoard.recieveAttack(5, 3);
         testBoard.recieveAttack(6, 3);
 
         expect(testBoard.isGameOver()).toBeDefined();

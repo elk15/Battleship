@@ -131,10 +131,10 @@ export default class Gameboard {
 
     isGameOver() {
         for (let i = 0; i < this.ships.length; i++) {
-            if (this.ships[i].isSunk()) {
-                return true;
+            if (!this.ships[i].isSunk()) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }

@@ -35,4 +35,8 @@ export default class Player {
     getRemainingShips() {
         return this.board.getRemainingShips();
     }
+
+    isGameOver() {
+        return this.board.isGameOver();
+    }
 }

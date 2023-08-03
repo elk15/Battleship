@@ -94,4 +94,14 @@ export default class View {
         View.addRedBlinking();
         document.querySelector('#game-caption').textContent = 'Enemy\'s Turn!';
     }
+
+    static displayPlayerWin() {
+        View.addGreenBlinking();
+        document.querySelector('#game-caption').textContent = 'Your Won!';
+    }
+
+    static displayEnemyWin() {
+        View.addRedBlinking();
+        document.querySelector('#game-caption').textContent = 'You Lost...';
+    }
 }
