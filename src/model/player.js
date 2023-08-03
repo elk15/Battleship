@@ -16,6 +16,10 @@ export default class Player {
         }
     }
 
+    placeShipsRandomly() {
+        this.board.placeShipsRandomly();
+    }
+
     makeMove(row, col, enemyBoard) {
         enemyBoard.recieveAttack(row, col);
         if (enemyBoard.getPosition(row, col) instanceof Ship) {
