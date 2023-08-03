@@ -67,7 +67,7 @@ export default class Gameboard {
                 if (row < 9 && this.board[row + 1][col + i] !== '') return false;
             }
             // check right
-            if ((col + length) < 9 && this.board[row][col + length] !== '') return false;
+            if ((col + length) < 10 && this.board[row][col + length] !== '') return false;
         } else {
             // for vertical ship
             // check above
@@ -79,7 +79,7 @@ export default class Gameboard {
                 if (col < 9 && this.board[row + i][col + 1] !== '') return false;
             }
             // check bellow
-            if ((row + length) < 9 && this.board[row + length][col] !== '') return false;
+            if ((row + length) < 10 && this.board[row + length][col] !== '') return false;
         }
         return true;
     }
