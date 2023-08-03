@@ -7,6 +7,8 @@ export default class Gameplay {
     static enemy = new Player();
 
     static startGame() {
+        Gameplay.player.clearBoard();
+        Gameplay.enemy.clearBoard();
         Gameplay.player.placeShipsRandomly();
         View.generatePlayerBoard(this.player.getBoard());
         Gameplay.enemy.placeShipsRandomly();
