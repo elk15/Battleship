@@ -13,12 +13,16 @@ describe('gameboard', () => {
         expect(testBoard.getPosition(0, 3).length).toBe(4);
     });
 
-    test('should check if there are adjacent ships', () => {
+    test('should check if there are adjacent ships near startpoint', () => {
         expect(testBoard.doesNotHaveAdjShips(2, 1, 4, 'v')).toBeFalsy();
     });
 
-    test('should check if there are adjacent ships 2', () => {
-        expect(testBoard.doesNotHaveAdjShips(1, 9, 9, 'h')).toBeFalsy();
+    test('should return true if there are no nearby ships', () => {
+        expect(testBoard.doesNotHaveAdjShips(1, 9, 9, 'h')).toBeTruthy();
+    });
+
+    test('should check if there are adjacent ships near the endpoint', () => {
+        expect(testBoard.doesNotHaveAdjShips(3, 5, 0, 'h')).toBeFalsy();
     });
 
     test('should place random ships', () => {

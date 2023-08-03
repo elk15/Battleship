@@ -22,6 +22,22 @@ export default class Gameboard {
         return this.board;
     }
 
+    clearBoard() {
+        this.board = [
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+            ['', '', '', '', '', '', '', '', '', ''],
+        ];
+        this.ships = [];
+    }
+
     placeShip(length, row, col, orientation) {
         if (!(this.board[row][col] instanceof Ship)) {
             const newShip = new Ship(length);
@@ -40,16 +56,31 @@ export default class Gameboard {
     }
 
     doesNotHaveAdjShips(length, row, col, orientation) {
-        if (row > 0 && this.board[row - 1][col] !== '') return false;
-        if (row < 9 && this.board[row + 1][col] !== '') return false;
-        if (col > 0 && this.board[row][col - 1] !== '') return false;
-        if (col < 9 && this.board[row][col + 1] !== '') return false;
-        const endRow = (orientation === 'h') ? row : row + length;
-        const endCol = (orientation === 'v') ? col : col + length;
-        if (endRow > 0 && this.board[endRow - 1][endCol] !== '') return false;
-        if (endRow < 9 && this.board[endRow + 1][endCol] !== '') return false;
-        if (endCol > 0 && this.board[endRow][endCol - 1] !== '') return false;
-        if (endCol < 9 && this.board[endRow][endCol + 1] !== '') return false;
+        if (orientation === 'h') {
+            // for horizontal ship
+            // check left
+            if (col > 0 && this.board[row][col - 1] !== '') return false;
+            for (let i = 0; i < length; i++) {
+                // check above
+                if (row > 0 && this.board[row - 1][col + i] !== '') return false;
+                // check bellow
+                if (row < 9 && this.board[row + 1][col + i] !== '') return false;
+            }
+            // check right
+            if ((col + length) < 9 && this.board[row][col + length] !== '') return false;
+        } else {
+            // for vertical ship
+            // check above
+            if (row > 0 && this.board[row - 1][col] !== '') return false;
+            for (let i = 0; i < length; i++) {
+                // check left
+                if (col > 0 && this.board[row + i][col - 1] !== '') return false;
+                // check right
+                if (col < 9 && this.board[row + i][col + 1] !== '') return false;
+            }
+            // check bellow
+            if ((row + length) < 9 && this.board[row + length][col] !== '') return false;
+        }
         return true;
     }
 
@@ -64,8 +95,8 @@ export default class Gameboard {
                 randomRow = Math.floor(Math.random() * 10);
                 randomCol = Math.floor(Math.random() * 10);
                 randomOrient = orientations[Math.floor(Math.random() * 2)];
-                if (randomOrient === 'v' && randomRow + length > 9) continue;
-                if (randomOrient === 'h' && randomCol + length > 9) continue;
+                if (randomOrient === 'v' && (randomRow + length - 1) > 9) continue;
+                if (randomOrient === 'h' && (randomCol + length - 1) > 9) continue;
                 if ((this.getPosition(randomRow, randomCol) === '')
                 && this.doesNotHaveAdjShips(length, randomRow, randomCol, randomOrient)) {
                     break;
