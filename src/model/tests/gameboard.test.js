@@ -42,6 +42,17 @@ describe('gameboard', () => {
         expect(testBoard.getPosition(0, 6)).toBe('missed');
     });
 
+    test('should be able to return the correct amount of unsinked ships', () => {
+        expect(testBoard.getRemainingShips()).toBe(2);
+    });
+
+    test('should be able to return the correct amount of unsinked ships after sinking one', () => {
+        testBoard.recieveAttack(4, 3);
+        testBoard.recieveAttack(5, 3);
+        testBoard.recieveAttack(6, 3);
+        expect(testBoard.getRemainingShips()).toBe(1);
+    });
+
     test('should be able to report when all ships are sunk', () => {
         testBoard.recieveAttack(0, 1);
         testBoard.recieveAttack(0, 2);

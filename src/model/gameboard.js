@@ -120,6 +120,15 @@ export default class Gameboard {
         }
     }
 
+    getRemainingShips() {
+        return this.ships.reduce((total, ship) => {
+            if (!ship.isSunk()) {
+                total += 1;
+            }
+            return total;
+        }, 0);
+    }
+
     isGameOver() {
         for (let i = 0; i < this.ships.length; i++) {
             if (this.ships[i].isSunk()) {
