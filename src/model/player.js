@@ -10,6 +10,10 @@ export default class Player {
         return this.board;
     }
 
+    clearBoard() {
+        this.board.clearBoard();
+    }
+
     placeShips(coordArr) {
         for (let i = 0; i < coordArr.length; i++) {
             this.board.placeShip(...coordArr[i]);
