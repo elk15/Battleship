@@ -34,11 +34,12 @@ export default class EnemyLogic {
         let row = null;
         let col = null;
 
-        let shipLocation = this.findShip();
+        let shipLocation = this.findShip(enemyBoard);
 
         if (shipLocation) {
             let [shipRow, shipCol] = shipLocation;
-            [row, col] = this.calculateMove(shipRow, shipCol);
+            let move = this.calculateMove(shipRow, shipCol);
+            [row, col] = move || this.getRandomMove();
         } else {
             [row, col] = this.getRandomMove();
         }
@@ -48,18 +49,20 @@ export default class EnemyLogic {
         } else {
             this.movesDone[row][col] = 'miss';
         }
-        return isSuccess;
+        return [row, col, isSuccess];
     }
 
     isMoveDoneBefore(row, col) {
         return this.movesDone[row][col] !== '';
     }
 
-    findShip() {
+    findShip(enemyBoard) {
         for (let row = 0; row < this.movesDone.length; row++) {
             for (let col = 0; col < this.movesDone.length; col++) {
                 if (this.movesDone[row][col] === 'ship') {
-                    return [row, col];
+                    if (!enemyBoard.getPosition(row, col).isSunk()) {
+                        return [row, col];
+                    }
                 }
             }
         }
