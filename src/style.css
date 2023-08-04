@@ -209,6 +209,56 @@ hr {
     align-items: center;
 }
 
+#overlay {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+#play-again {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    min-height: 100%;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play-again-wrapper {
+    color: var(--font-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.5rem;
+}
+
+.play-again-wrapper button {
+    width: 70%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    background-color: var(--secondary-color);
+    border: none;
+    color: var(--font-color);
+    border-radius: 10px;
+}
+
 @keyframes blinking-red {
     0% {
       color: #FFF;
@@ -297,5 +347,9 @@ hr {
     #enemy-board .miss span,  #player-board .miss span{
         font-size: 2rem;
         position: static;
+    }
+
+    .play-again-wrapper button {
+        width: 100%;
     }
 }

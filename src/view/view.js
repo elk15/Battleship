@@ -104,4 +104,22 @@ export default class View {
         View.addRedBlinking();
         document.querySelector('#game-caption').textContent = 'You Lost...';
     }
+
+    static hideOverlay() {
+        document.querySelector('#overlay').classList.add('hidden');
+    }
+
+    static showOverlay() {
+        document.querySelector('#overlay').classList.remove('hidden');
+    }
+
+    static showPlayAgain(winner) {
+        document.querySelector('#play-again').classList.remove('hidden');
+        const text = winner === 'p' ? 'You won :)' : 'You lost :(';
+        document.querySelector('#play-again #result-msg').textContent = text;
+    }
+
+    static hidePlayAgain() {
+        document.querySelector('#play-again').classList.add('hidden');
+    }
 }

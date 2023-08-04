@@ -4,7 +4,10 @@ export default class Controller {
     static attachEventListeners() {
         document.querySelector('#new-game').addEventListener('click', () => {
             Controller.startNewGame();
-            Controller.attachSquareEventListeners();
+        });
+
+        document.querySelector('#play-again-btn').addEventListener('click', () => {
+            Controller.startNewGame();
         });
     }
 
@@ -20,6 +23,7 @@ export default class Controller {
 
     static startNewGame() {
         Gameplay.startGame();
+        Controller.attachSquareEventListeners();
     }
 
     static playerMakesMove(row, col) {

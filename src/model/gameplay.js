@@ -20,6 +20,8 @@ export default class Gameplay {
         View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
         View.displayRemainingPlayerShips(this.player.getRemainingShips());
         View.displayPlayerTurn();
+        View.hideOverlay();
+        View.hidePlayAgain();
     }
 
     static playerMakesMove(row, col) {
@@ -28,6 +30,8 @@ export default class Gameplay {
         View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
         if (Gameplay.enemy.isGameOver()) {
             View.displayPlayerWin();
+            View.showOverlay();
+            View.showPlayAgain('p');
             return;
         }
         if (!isSuccess) {
@@ -43,6 +47,8 @@ export default class Gameplay {
             View.displayRemainingPlayerShips(Gameplay.player.getRemainingShips());
             if (Gameplay.player.isGameOver()) {
                 View.displayEnemyWin();
+                View.showOverlay();
+                View.showPlayAgain('e');
                 return;
             }
             if (!isSuccess) {
