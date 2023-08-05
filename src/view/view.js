@@ -131,6 +131,7 @@ export default class View {
                 square = this.findSquare(String(Number(row) + i), col, '#place-ships-board');
             }
             square.classList.add('ship');
+            square.classList.remove('empty');
         }
     }
 }

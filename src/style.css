@@ -323,6 +323,15 @@ button:hover{
     gap: 10px;
 }
 
+#place-ships-board .empty {
+    cursor: pointer;
+}
+
+#place-ships-board .empty:hover {
+    background-color: rgb(87, 52, 180);
+
+}
+
 @keyframes blinking-red {
     0% {
       color: #FFF;
