@@ -14,13 +14,16 @@ export default class Controller {
 
     static attachEventListeners() {
         View.generateBoard('#place-ships-board');
+        View.hideMainContainer();
 
         document.querySelector('#new-game').addEventListener('click', () => {
             View.showPlaceShips();
+            View.showOverlay();
         });
 
         document.querySelector('#play-again-btn').addEventListener('click', () => {
             View.showPlaceShips();
+            View.hidePlayAgain();
         });
 
         document.querySelector('#rotate').addEventListener('click', () => {

@@ -148,4 +148,12 @@ export default class View {
     static showPlaceShips() {
         document.querySelector('#place-ships').classList.remove('hidden');
     }
+
+    static hideMainContainer() {
+        document.querySelector('.main-container').classList.add('hidden');
+    }
+
+    static showMainContainer() {
+        document.querySelector('.main-container').classList.remove('hidden');
+    }
 }

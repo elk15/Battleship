@@ -24,6 +24,7 @@ export default class Gameplay {
         View.hideOverlay();
         View.hidePlayAgain();
         View.hidePlaceShips();
+        View.showMainContainer();
     }
 
     static playerMakesMove(row, col) {
