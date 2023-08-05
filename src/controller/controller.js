@@ -40,6 +40,12 @@ export default class Controller {
             }
         });
 
+        document.querySelector('#random').addEventListener('click', () => {
+            this.resetPlaceShipsBoard();
+            Gameplay.createRandomBoard();
+            this.placedRandomly = true;
+        });
+
         this.attachPlaceShipSquareListeners();
     }
 
@@ -100,7 +106,6 @@ export default class Controller {
     }
 
     static doesSquareHasShip(row, col) {
-        console.log(row, col);
         const square = View.findSquare(String(row), String(col), '#place-ships-board');
         return square.classList.contains('ship');
     }

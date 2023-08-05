@@ -10,14 +10,15 @@ export default class Gameplay {
     static enemyAI = new EnemyLogic(Gameplay.enemy);
 
     static startGame(ships) {
-        Gameplay.player.clearBoard();
         Gameplay.enemy.clearBoard();
         Gameplay.enemyAI.clearMoves();
-        // Gameplay.player.placeShipsRandomly();
-        if (ships.length === 8) Gameplay.player.placeShips(ships);
+        if (ships.length === 8) {
+            Gameplay.player.clearBoard();
+            Gameplay.player.placeShips(ships);
+        }
         Gameplay.enemy.placeShipsRandomly();
         View.generatePlayerBoard(this.player.getBoard());
-        View.generateEnemyBoard(this.enemy.getBoard());
+        View.generateEnemyBoard();
         View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
         View.displayRemainingPlayerShips(this.player.getRemainingShips());
         View.displayPlayerTurn();
@@ -59,5 +60,12 @@ export default class Gameplay {
                 break;
             }
         }
+    }
+
+    static createRandomBoard() {
+        Gameplay.player.clearBoard();
+        Gameplay.player.placeShipsRandomly();
+        View.generateBoard('#place-ships-board', Gameplay.player.getBoard());
+        View.changeNextShipMsg();
     }
 }

@@ -10,7 +10,7 @@ export default class View {
                 square.classList.add('square');
                 square.dataset.row = row;
                 square.dataset.col = col;
-                if (id === '#player-board' && board.getBoard()[row][col] !== '') {
+                if (board && board.getBoard()[row][col] !== '') {
                     square.classList.add('ship');
                 } else {
                     square.classList.add('empty');
