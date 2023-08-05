@@ -134,4 +134,10 @@ export default class View {
             square.classList.remove('empty');
         }
     }
+
+    static changeNextShipMsg(length) {
+        const msg = length === undefined ? 'All ships placed!'
+            : `Place your ${length} square long ship`;
+        document.querySelector('#ship-desc').textContent = msg;
+    }
 }

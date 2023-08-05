@@ -46,6 +46,7 @@ export default class Controller {
         Gameplay.startGame();
         this.attachSquareEventListeners();
         View.generateBoard('#place-ships-board');
+        View.changeNextShipMsg(this.shipLengths[0]);
         this.attachPlaceShipSquareListeners();
         this.shipIndex = 0;
     }
@@ -57,5 +58,6 @@ export default class Controller {
     static placeShip(row, col) {
         View.placeShip(this.shipLengths[this.shipIndex], row, col, this.orientation);
         this.shipIndex += 1;
+        View.changeNextShipMsg(this.shipLengths[this.shipIndex]);
     }
 }
