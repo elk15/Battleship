@@ -25,6 +25,10 @@ export default class Controller {
             this.changeRotation();
         });
 
+        document.querySelector('#reset').addEventListener('click', () => {
+            this.resetPlaceShipBoard();
+        });
+
         this.attachPlaceShipSquareListeners();
     }
 
@@ -51,12 +55,7 @@ export default class Controller {
     static startNewGame() {
         Gameplay.startGame();
         this.attachSquareEventListeners();
-        View.generateBoard('#place-ships-board');
-        View.changeNextShipMsg(this.shipLengths[0]);
-        this.attachPlaceShipSquareListeners();
-        this.shipsPlaced = [];
-        this.shipIndex = 0;
-        this.orientation = 'h';
+        this.resetPlaceShipBoard();
     }
 
     static playerMakesMove(row, col) {
@@ -72,5 +71,14 @@ export default class Controller {
 
     static changeRotation() {
         this.orientation = this.orientation === 'h' ? 'v' : 'h';
+    }
+
+    static resetPlaceShipBoard() {
+        View.generateBoard('#place-ships-board');
+        View.changeNextShipMsg(this.shipLengths[0]);
+        this.attachPlaceShipSquareListeners();
+        this.shipsPlaced = [];
+        this.shipIndex = 0;
+        this.orientation = 'h';
     }
 }
