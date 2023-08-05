@@ -2,16 +2,15 @@ import Gameboard from '../model/gameboard';
 import Ship from '../model/ship';
 
 export default class View {
-    static generateBoard(id, board) {
+    static generateBoard(id, board = null) {
         document.querySelector(id).innerHTML = '';
-        const arrBoard = board.getBoard();
         for (let row = 0; row < 10; row++) {
             for (let col = 0; col < 10; col++) {
                 const square = document.createElement('div');
                 square.classList.add('square');
                 square.dataset.row = row;
                 square.dataset.col = col;
-                if (id === '#player-board' && arrBoard[row][col] !== '') {
+                if (id === '#player-board' && board.getBoard()[row][col] !== '') {
                     square.classList.add('ship');
                 } else {
                     square.classList.add('empty');

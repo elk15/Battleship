@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Battleship</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
     <div class="container">
@@ -90,11 +91,59 @@
             </div>
         </main>
     </div>
-    <div id="overlay" class="hidden"></div>
+    <div id="overlay" class=""></div>
     <div id="play-again" class="hidden">
         <div class="play-again-wrapper">
             <h2 id="result-msg">You lost :(</h2>
             <button id="play-again-btn">Play Again</button>
+        </div>
+    </div>
+    <div id="place-ships" class="">
+        <div class="place-ships-wrapper">
+            <h2>Place your ships</h2>
+            <p id="ship-desc">Place your 4 square long ship</p>
+            <button id="rotate">Rotate</button>
+            <div class="board">
+                <div class="columns">
+                    <span>A</span>
+                    <span>B</span>
+                    <span>C</span>
+                    <span>D</span>
+                    <span>E</span>
+                    <span>F</span>
+                    <span>G</span>
+                    <span>H</span>
+                    <span>I</span>
+                    <span>J</span>
+                </div>
+                <div class="rows">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                </div>
+                <div id="place-ships-board"></div>
+            </div>
+            <div class="instructions">
+                <span class="lightbulb">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>lightbulb-on</title><path d="M12,6A6,6 0 0,1 18,12C18,14.22 16.79,16.16 15,17.2V19A1,1 0 0,1 14,20H10A1,1 0 0,1 9,19V17.2C7.21,16.16 6,14.22 6,12A6,6 0 0,1 12,6M14,21V22A1,1 0 0,1 13,23H11A1,1 0 0,1 10,22V21H14M20,11H23V13H20V11M1,11H4V13H1V11M13,1V4H11V1H13M4.92,3.5L7.05,5.64L5.63,7.05L3.5,4.93L4.92,3.5M16.95,5.63L19.07,3.5L20.5,4.93L18.37,7.05L16.95,5.63Z" /></svg>
+                </span>
+                <div class="bullets">
+                    <p>* Ships can't be placed next to each other</p>
+                    <p>* When you hit a ship you get one free turn</p>
+                </div>
+            </div>
+            <div class="buttons">
+                <button id="start">Start</button>
+                <button id="random">Random</button>
+                <button id="reset">Reset</button>
+            </div>
         </div>
     </div>
     <script src="main.js"></script>

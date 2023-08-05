@@ -1,7 +1,10 @@
 import Gameplay from '../model/gameplay';
+import View from '../view/view';
 
 export default class Controller {
     static attachEventListeners() {
+        View.generateBoard('#place-ships-board');
+
         document.querySelector('#new-game').addEventListener('click', () => {
             Controller.startNewGame();
         });

@@ -114,7 +114,7 @@ main{
     align-items: center;
 }
 
-#player-board, #enemy-board {
+#player-board, #enemy-board, #place-ships-board {
     border: 4px #002c66 solid;
     grid-column: 2/3;
     grid-row: 2/3;
@@ -196,7 +196,7 @@ hr {
     background-color: #2389da;
 }
 
-#player-board, #enemy-board {
+#player-board, #enemy-board, #place-ships-board {
     background-color: #002c66;
     display: grid;
     gap: 5px 5px;
@@ -257,6 +257,70 @@ hr {
     border: none;
     color: var(--font-color);
     border-radius: 10px;
+}
+
+#place-ships {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+}
+
+.place-ships-wrapper {
+    background-color: var(--primary-color);
+    margin-top: 10px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 10px;
+    color: var(--font-color);
+    max-height: 800px;
+}
+
+button {
+    background: none;
+    color: var(--font-color);
+    border: none;
+    cursor: pointer;
+}
+
+button:hover{
+    color: var(--green);
+}
+
+.place-ships-wrapper button {
+    font-size: 1.2rem;
+}
+
+.place-ships-wrapper .buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.lightbulb svg{
+  fill: yellow;
+  width: 30px;
+}
+
+.instructions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.instructions .bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 @keyframes blinking-red {
@@ -352,4 +416,11 @@ hr {
     .play-again-wrapper button {
         width: 100%;
     }
+
+    .place-ships-wrapper {
+        width: 100%;
+        height: 100%;
+        margin-top: 0;
+    }
+
 }
