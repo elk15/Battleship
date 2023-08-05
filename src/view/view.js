@@ -121,4 +121,16 @@ export default class View {
     static hidePlayAgain() {
         document.querySelector('#play-again').classList.add('hidden');
     }
+
+    static placeShip(length, row, col, orientation) {
+        let square;
+        for (let i = 0; i < length; i++) {
+            if (orientation === 'h') {
+                square = this.findSquare(row, String(Number(col) + i), '#place-ships-board');
+            } else {
+                square = this.findSquare(String(Number(row) + i), col, '#place-ships-board');
+            }
+            square.classList.add('ship');
+        }
+    }
 }
