@@ -56,8 +56,12 @@ export default class Controller {
     static attachPlaceShipSquareListeners() {
         document.querySelectorAll('#place-ships-board .square').forEach((square) => {
             square.addEventListener('click', (e) => {
-                if (this.shipIndex < this.shipLengths.length) {
-                    this.placeShip(e.target.dataset.row, e.target.dataset.col);
+                let { row } = e.target.dataset;
+                let { col } = e.target.dataset;
+                let currentShipLength = this.shipLengths[this.shipIndex];
+                if (this.shipIndex < this.shipLengths.length
+                    && this.isShipPlacementValid(currentShipLength, Number(row), Number(col))) {
+                    this.placeShip(row, col);
                 }
             });
         });
@@ -93,5 +97,46 @@ export default class Controller {
         this.shipIndex = 0;
         this.orientation = 'h';
         this.placedRandomly = false;
+    }
+
+    static doesSquareHasShip(row, col) {
+        console.log(row, col);
+        const square = View.findSquare(String(row), String(col), '#place-ships-board');
+        return square.classList.contains('ship');
+    }
+
+    static isShipPlacementValid(length, row, col) {
+        // check if ship is out of bounds
+        if (this.orientation === 'v' && (row + length - 1) > 9) return false;
+        if (this.orientation === 'h' && (col + length - 1) > 9) return false;
+
+        // check for adjacent ships
+        if (this.orientation === 'h') {
+            // for horizontal ship
+            // check left
+            if (col > 0 && this.doesSquareHasShip(row, col - 1)) return false;
+            for (let i = 0; i < length; i++) {
+                // check above
+                if (row > 0 && this.doesSquareHasShip(row - 1, col + i)) return false;
+                // check bellow
+                if (row < 9 && this.doesSquareHasShip(row + 1, col + i)) return false;
+            }
+            // check right
+            if ((col + length) < 10 && this.doesSquareHasShip(row, col + length)) return false;
+        } else {
+            // for vertical ship
+            // check above
+            if (row > 0 && this.doesSquareHasShip(row - 1, col)) return false;
+            for (let i = 0; i < length; i++) {
+                // check left
+                if (col > 0 && this.doesSquareHasShip(row + i, col - 1)) return false;
+                // check right
+                if (col < 9 && this.doesSquareHasShip(row + i, col + 1)) return false;
+            }
+            // check bellow
+            if ((row + length) < 10 && this.doesSquareHasShip(row + length, col)) return false;
+        }
+
+        return true;
     }
 }
