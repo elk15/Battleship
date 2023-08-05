@@ -10,15 +10,17 @@ export default class Controller {
 
     static shipsPlaced = [];
 
+    static placedRandomly = false;
+
     static attachEventListeners() {
         View.generateBoard('#place-ships-board');
 
         document.querySelector('#new-game').addEventListener('click', () => {
-            this.startNewGame();
+            View.showPlaceShips();
         });
 
         document.querySelector('#play-again-btn').addEventListener('click', () => {
-            this.startNewGame();
+            View.showPlaceShips();
         });
 
         document.querySelector('#rotate').addEventListener('click', () => {
@@ -26,7 +28,13 @@ export default class Controller {
         });
 
         document.querySelector('#reset').addEventListener('click', () => {
-            this.resetPlaceShipBoard();
+            this.resetPlaceShipsBoard();
+        });
+
+        document.querySelector('#start').addEventListener('click', () => {
+            if (this.placedRandomly || (this.shipsPlaced.length === 8)) {
+                this.startNewGame();
+            }
         });
 
         this.attachPlaceShipSquareListeners();
@@ -53,9 +61,9 @@ export default class Controller {
     }
 
     static startNewGame() {
-        Gameplay.startGame();
+        Gameplay.startGame(this.shipsPlaced);
         this.attachSquareEventListeners();
-        this.resetPlaceShipBoard();
+        this.resetPlaceShipsBoard();
     }
 
     static playerMakesMove(row, col) {
@@ -64,7 +72,8 @@ export default class Controller {
 
     static placeShip(row, col) {
         View.placeShip(this.shipLengths[this.shipIndex], row, col, this.orientation);
-        this.shipsPlaced.push([this.shipLengths[this.shipIndex], row, col, this.orientation]);
+        this.shipsPlaced.push([this.shipLengths[this.shipIndex],
+            Number(row), Number(col), this.orientation]);
         this.shipIndex += 1;
         View.changeNextShipMsg(this.shipLengths[this.shipIndex]);
     }
@@ -73,12 +82,13 @@ export default class Controller {
         this.orientation = this.orientation === 'h' ? 'v' : 'h';
     }
 
-    static resetPlaceShipBoard() {
+    static resetPlaceShipsBoard() {
         View.generateBoard('#place-ships-board');
         View.changeNextShipMsg(this.shipLengths[0]);
         this.attachPlaceShipSquareListeners();
         this.shipsPlaced = [];
         this.shipIndex = 0;
         this.orientation = 'h';
+        this.placedRandomly = false;
     }
 }

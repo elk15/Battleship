@@ -140,4 +140,12 @@ export default class View {
             : `Place your ${length} square long ship`;
         document.querySelector('#ship-desc').textContent = msg;
     }
+
+    static hidePlaceShips() {
+        document.querySelector('#place-ships').classList.add('hidden');
+    }
+
+    static showPlaceShips() {
+        document.querySelector('#place-ships').classList.remove('hidden');
+    }
 }

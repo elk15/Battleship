@@ -7,13 +7,14 @@ export default class Gameplay {
 
     static enemy = new Player();
 
-    static enemyAI = new EnemyLogic(this.enemy);
+    static enemyAI = new EnemyLogic(Gameplay.enemy);
 
-    static startGame() {
+    static startGame(ships) {
         Gameplay.player.clearBoard();
         Gameplay.enemy.clearBoard();
         Gameplay.enemyAI.clearMoves();
-        Gameplay.player.placeShipsRandomly();
+        // Gameplay.player.placeShipsRandomly();
+        if (ships.length === 8) Gameplay.player.placeShips(ships);
         Gameplay.enemy.placeShipsRandomly();
         View.generatePlayerBoard(this.player.getBoard());
         View.generateEnemyBoard(this.enemy.getBoard());
@@ -22,12 +23,13 @@ export default class Gameplay {
         View.displayPlayerTurn();
         View.hideOverlay();
         View.hidePlayAgain();
+        View.hidePlaceShips();
     }
 
     static playerMakesMove(row, col) {
         const isSuccess = Gameplay.player.makeMove(row, col, Gameplay.enemy.getBoard());
         View.displayPlayerMoveResult(row, col, isSuccess);
-        View.displayRemainingEnemyShips(this.enemy.getRemainingShips());
+        View.displayRemainingEnemyShips(Gameplay.enemy.getRemainingShips());
         if (Gameplay.enemy.isGameOver()) {
             View.displayPlayerWin();
             View.showOverlay();
