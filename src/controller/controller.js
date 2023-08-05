@@ -8,6 +8,8 @@ export default class Controller {
 
     static shipIndex = 0;
 
+    static shipsPlaced = [];
+
     static attachEventListeners() {
         View.generateBoard('#place-ships-board');
 
@@ -17,6 +19,10 @@ export default class Controller {
 
         document.querySelector('#play-again-btn').addEventListener('click', () => {
             this.startNewGame();
+        });
+
+        document.querySelector('#rotate').addEventListener('click', () => {
+            this.changeRotation();
         });
 
         this.attachPlaceShipSquareListeners();
@@ -48,7 +54,9 @@ export default class Controller {
         View.generateBoard('#place-ships-board');
         View.changeNextShipMsg(this.shipLengths[0]);
         this.attachPlaceShipSquareListeners();
+        this.shipsPlaced = [];
         this.shipIndex = 0;
+        this.orientation = 'h';
     }
 
     static playerMakesMove(row, col) {
@@ -57,7 +65,12 @@ export default class Controller {
 
     static placeShip(row, col) {
         View.placeShip(this.shipLengths[this.shipIndex], row, col, this.orientation);
+        this.shipsPlaced.push([this.shipLengths[this.shipIndex], row, col, this.orientation]);
         this.shipIndex += 1;
         View.changeNextShipMsg(this.shipLengths[this.shipIndex]);
+    }
+
+    static changeRotation() {
+        this.orientation = this.orientation === 'h' ? 'v' : 'h';
     }
 }
