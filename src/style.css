@@ -368,26 +368,15 @@ button:hover{
         width: 100%;
     }
 
-    .square {
-        height: 1.8rem;
-        width: 1.8rem;
-        font-size: 1.8rem;
-    }
-
-    main {
-        padding-top: 10px;
-    }
-
     .main-container {
         flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 25px;
+        padding-bottom: 20px;
     }
 
     #enemy-board .miss span, #player-board .miss span{
-        font-size: 2.2rem;
-        position: absolute;
-        bottom: -10px;
+        font-size: 4.2rem;
     }
     
 }
@@ -406,10 +395,9 @@ button:hover{
     }
 
     .square {
-        height: 1rem;
-        width: 1rem;
-        font-size: 1rem;
-
+        height: 1.8rem;
+        width: 1.8rem;
+        font-size: 1.6rem;
     }
 
     #new-game {
@@ -418,9 +406,8 @@ button:hover{
     }
 
     #enemy-board .miss span,  #player-board .miss span{
-        font-size: 2rem;
-        position: static;
-    }
+        font-size: 3rem;
+        }
 
     .play-again-wrapper button {
         width: 100%;
